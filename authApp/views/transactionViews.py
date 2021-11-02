@@ -41,7 +41,7 @@ class TransactionsAccountView(generics.ListAPIView):
         queryset=Transaction.objects.filter(origin_account_id=self.kwargs['account'])
         return queryset
 
-class TrasactionCreateView(generics.CreateAPIView):
+class TransactionCreateView(generics.CreateAPIView):
     queryset = Transaction.objects.all()
     serializer_class = TransactionSerializer
     permission_classes = (IsAuthenticated,)
@@ -68,7 +68,7 @@ class TrasactionCreateView(generics.CreateAPIView):
         origin_account.save()
 
         destiny_account=Account.objects.get(id=request.data['transaction_data']['destiny_account'])
-        destiny_account.balance+=request.data['transaction_data']['amount']
+        destiny_account.balance +=request.data['transaction_data']['amount']
         destiny_account.save()
         return Response("Transaccion exitosa",status=status.HTTP_201_CREATED)
 

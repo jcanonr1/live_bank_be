@@ -7,7 +7,7 @@ from rest_framework             import serializers
 
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
-        model=transaction
+        model=Transaction
         fields=["origin_account","destiny_account","amount","register_date","note"]
 
     def to_representation(self, obj):
